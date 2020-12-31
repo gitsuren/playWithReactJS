@@ -1,48 +1,34 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import {Link} from 'react-router-dom';
 
-class Header extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    componentWillMount() {
-
-    }
-
-    componentDidMount() {
-
-    }
-
-    componentWillReceiveProps(nextProps) {
-
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-
-    }
-
-    componentWillUpdate(nextProps, nextState) {
-
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-
-    }
-
-    componentWillUnmount() {
-
-    }
-
-    render() {
-        return (
-            <header className="navbar">
-              This is the header
-            </header>
-        );
-    }
+function Header() {
+    return (
+        <header style={headerStyle}>
+            <h1>Play with ReactJS - Learning!</h1>
+            <Link style={linkStyle} to="/">Home/TodoList</Link>
+            | <Link style={linkStyle} to="/login">Logged In?</Link>
+            | <Link style={linkStyle} to="/contactCardList">ContactCard</Link>
+            | <Link style={linkStyle} to="/jokeList">Joke</Link>
+            | <Link style={linkStyle} to="/productList">Product</Link>
+            | <Link style={linkStyle} to="/eventsInReact">Events</Link>
+            | <Link style={linkStyle} to="/apiFetch">ApiFetch</Link>
+            | <Link style={linkStyle} to="/formContainer">Forms</Link>
+            | <Link style={linkStyle} to="/meme">Meme Generator</Link>
+            | <Link style={linkStyle} to="/about">About</Link>
+        </header>
+    )
 }
 
-Header.propTypes = {};
+const headerStyle = {
+    background: '#333',
+    color: '#fff',
+    textAlign: 'center',
+    padding: '10px'
+}
+
+const linkStyle = {
+    color: '#fff',
+    textDecoration: 'none'
+}
 
 export default Header;

@@ -1,3 +1,5 @@
+import React, {Component} from 'react'
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import Header from "./components/header/Header";
@@ -16,50 +18,85 @@ import Form from "./components/forms/Form";
 import FormContainer from "./components/forms/FormContainer";
 import MemeHeader from "./components/meme/MemeHeader";
 import MemeGenerator from "./components/meme/MemeGenerator";
+import About from "./components/about/About";
 
-function App() {
-    return (
-        // <div className="App">
-        //   <header className="App-header">
-        //     <img src={logo} className="App-logo" alt="logo" />
-        //     <p>
-        //       Edit <code>src/App.js</code> and save to reload - HELLO WORLD!!!.
-        //     </p>
-        //     <a
-        //       className="App-link"
-        //       href="https://reactjs.org"
-        //       target="_blank"
-        //       rel="noopener noreferrer"
-        //     >
-        //       Learn React
-        //     </a>
-        //   </header>
-        // </div>
-        <div className="todo-list">
-            <Header/>
-            <Login/>
-            {/*<MainContent/>*/}
-            <TodoItemList/>
-            <Footer/>
 
-            <ContactCardList/>
+// function App() {
+class App extends Component {
 
-            <JokeList/>
+    render() {
+        return (
+            // <div className="App">
+            //   <header className="App-header">
+            //     <img src={logo} className="App-logo" alt="logo" />
+            //     <p>
+            //       Edit <code>src/App.js</code> and save to reload - HELLO WORLD!!!.
+            //     </p>
+            //     <a
+            //       className="App-link"
+            //       href="https://reactjs.org"
+            //       target="_blank"
+            //       rel="noopener noreferrer"
+            //     >
+            //       Learn React
+            //     </a>
+            //   </header>
+            // </div>
 
-            <ProductList/>
+            <Router>
+                <div className="todo-list">
+                    <Header/>
+                    {/*<MainContent/>*/}
+                    <Route
+                        exact
+                        path="/"
+                        render={props => (
+                            <React.Fragment>
+                                <TodoItemList/>
+                            </React.Fragment>
+                        )}
+                        />
 
-            <EventsInReact/>
+                    {/*<TodoItemList/>*/}
+                    <Route path="/login" component={Login} />
+                    <Route path="/contactCardList" component={ContactCardList} />
+                    <Route path="/jokeList" component={JokeList} />
+                    <Route path="/productList" component={ProductList} />
+                    <Route path="/eventsInReact" component={EventsInReact} />
+                    <Route path="/apiFetch" component={ApiFetch} />
+                    <Route path="/formContainer" component={FormContainer} />
+                    <Route path="/meme" render={props =>(
+                        <React.Fragment>
+                            <br/>
+                            <MemeHeader/>
+                            <MemeGenerator/>
+                        </React.Fragment>
+                    )} />
+                    <Route path="/about" component={About} />
 
-            <ApiFetch/>
+                    {/*<Login/>*/}
+                    {/*<Footer/>*/}
 
-            {/*this is before we moved form to its own container and component<Form/>*/}
-            <FormContainer/>
+                    {/*<ContactCardList/>*/}
 
-            <MemeHeader/>
-            <MemeGenerator/>
+                    {/*<JokeList/>*/}
 
-        </div>
-    );
+                    {/*<ProductList/>*/}
+
+                    {/*<EventsInReact/>*/}
+
+                    {/*<ApiFetch/>*/}
+
+                    {/*/!*this is before we moved form to its own container and component<Form/>*!/*/}
+                    {/*<FormContainer/>*/}
+
+                    {/*<MemeHeader/>*/}
+                    {/*<MemeGenerator/>*/}
+
+                </div>
+            </Router>
+        );
+    }
 }
 
 export default App;
